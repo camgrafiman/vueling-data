@@ -95,10 +95,6 @@ app.get("/create-xml", async(req, res) => {
     res.send(test);
 });
 
-app.get("/vueling/", async(req, res) => {
-    const html = getHTML(req.landing);
-});
-
 app.get("/spreadsheets/get-urls", async(req, res) => {
     const auth = new google.auth.GoogleAuth({
         keyFile: "vueling-data-aaeef24ee6b4.json",
