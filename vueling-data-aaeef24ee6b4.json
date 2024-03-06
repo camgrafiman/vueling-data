@@ -1,0 +1,13 @@
+{
+  "type": "service_account",
+  "project_id": "vueling-data",
+  "private_key_id": "aaeef24ee6b467f328119fb070373a2c7dbca0a8",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQCcx/0t8n3og24M\nipwqKAeVZ9WNVdxBBXjS+x+AVsmGPNJ5wDZcTql9+26HQAJpGvqMhydJCSpY2w7c\n2UYGycjxUVlj6D0LQJ7y8JGEnCQ/omNwGdepXuERXwxpQlPEW2XVEmacUnA1VyQj\n8MXh7Z9qb6hSe9l9tAvdMTk6jDCEJVZ9CUPiEUEXj+asVCaOWqXfaPqTnlZl5EsE\n1GFYAqMiVzKi0zNgwJQczLtAtiMWdjUNxo/mPhP+yt/Gh6XYAqFf3FcFhBpr64P4\noV5AnNvPIggK/7TRWKluGcsxDqrZHtFytV0+qIVajCeKxhM9cRkoYwEVtIFLvhxf\n0eGS8+SlAgMBAAECggEABolOwWOKo0h9Evgua/i3EQZyTU4TyWdjst9Pk2d+FGLx\nxXiuUel62h4PubZnkB+huLBXAqdneBF98taUiFDrJNoNSrbsE82FMvMbpgM0GBRH\nMzoolxucPfMQAecHHGvqq9gnpgNiQTimVy2ngMFW5zZlHQQKPI1M/bmBJAAKcvl8\nBUKF/fGqnvbfIvX1PqIcItbyUtZevKn4leOwm9iY4fVeM/aJPFAjmw2H/xYXqHyN\nlfXcrVRPxxgF/nHoAEaULoxuXm0LYa1hfi0Bu8Hv7xZQyaooTYC6Qhdbq+U4/HTH\npE3D9JpUV6D/L2q53vGK28iECqV11I7qhVQ7G8r2qwKBgQDO10xzoJMHey6IWT7Q\nKrQipSUqXGCAm4laE38eOFRHy0FgrpXK5edcx2i2BV6pdWIiUKle71+6ZciOsZZD\naDuPB8YZtxn5XfiMiKgGOUIuPUQ4H90FCGOWV3Cz23buiIBWu3CFx31MDEEaFquD\n6CzHAh2+WVjPepK9yRtaN5e3hwKBgQDCCu6px13sMrG6zCVUnCInblUOdUuvfDRQ\n3ssXhktNBL4Dhk4awZIxwnAJaK5mc7hZcsNtz1vfAgya//vKI4gHarPgwARqDKZ3\n3iYU9OFpJI72Mb+W8Oo6fC0oAcGD9cICH7pFqXSvX50PwdJjek/t7DORpfvgQAOu\nxI138Sa1cwKBgGBqYZvAbOje1aj/GNWGImPH4VQmrWEln1faoLWggkDZEQeVOgPT\nOQ65cSjvxdlt+ymNufWj1VaY3W0OgMG5E5IviHsyK6xezl4L0W7dP+k369XRnIAd\nEfbhmYptMbos7M4BH4lsnQ5W4/3aNWcOUdkONnklQs2sEDzhQpvCMDl/AoGAMO1q\nwnqXzy/1KqHBI/V+kyy527xtyiDqXB3hXdwp7pCsjNz3or1+bHeXone3yfOR31QV\nvQGVK8UrgoXbalvNN/mKw7gHJOptqznjplMc51MljSR8J8Y1eWvIQxc2QVzdf4Wa\nhWg2GOZmBwwbTaQQtXBijG4q9Z+OjinXdg/jb8sCgYEAmONyQYy7Ur26m87JYjwE\nRD52F8Ps/s87VtrHBizkTQuI7Di7Ckg9TA9LCK+s1CL0kOh0IkcecP8Ttt1BIZPk\nBSGEig+Af6iK8GK6SJRw4nQMmBje6vQWhL3NR8whDw3T0Y8f/JTkG/xkYyJJ8u1u\nvJTWSXtDisRHttk+1Q7rdeE=\n-----END PRIVATE KEY-----\n",
+  "client_email": "vueling-data-service@vueling-data.iam.gserviceaccount.com",
+  "client_id": "100534160747708248700",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/vueling-data-service%40vueling-data.iam.gserviceaccount.com",
+  "universe_domain": "googleapis.com"
+}
