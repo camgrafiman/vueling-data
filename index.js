@@ -8,13 +8,19 @@ const { google } = require("googleapis");
 
 const {
     getHTML,
+    getHTMLCORS,
     getListProductPage,
     dataProductsActual,
     getSingleProductData,
     createXML,
     returnXML,
 } = require("./lib/scraper/scraper.js");
-const { createProductJson, createCatalog, createCatalogArray } = require("./lib/utils/createProductStructure.js");
+const {
+    createProductJson,
+    createCatalog,
+    createCatalogArray,
+    createCatalogArrayCORS,
+} = require("./lib/utils/createProductStructure.js");
 const { transporter } = require("./lib/mailer/nodemailer_functions.js");
 
 const port = process.env.PORT || 5000;
@@ -144,6 +150,105 @@ app.get("/spreadsheets/get-urls", async(req, res) => {
 
     // Usar el metodo createCatalog para objetos o createCatalogArray para un array sin el nombre de los campos.
     const automaticCatalog = await createCatalogArray(panelRowsUrls, panelHojas);
+
+    console.log("======== AUTOMATIC CATALOG VALUES: ======");
+    console.log(automaticCatalog);
+
+    // // Limpiar la tabla para evitar tener datos desactualizados:
+    // await googleSheets.spreadsheets.values.clear({
+    //     auth,
+    //     spreadsheetId: SPREADSHEET_FEED,
+    //     range: "julio_cesta_main!A2:Z",
+    // });
+
+    // // Escribir los datos en otro documento, en este caso el spreadsheet FEED:
+    // await googleSheets.spreadsheets.values.append({
+    //     auth,
+    //     spreadsheetId: SPREADSHEET_FEED,
+    //     range: "julio_cesta_main!A2:Z",
+    //     valueInputOption: "RAW", // O "USER_ENTERED"
+    //     resource: {
+    //         values: automaticCatalog,
+    //     },
+    // });
+
+    // Limpiar las tablas antes de escribir los datos:
+    for (let i = 0; i < panelRowsUrls.length; i++) {
+        await googleSheets.spreadsheets.values.clear({
+            auth,
+            spreadsheetId: SPREADSHEET_FEED,
+            range: panelHojas[i].toString() + "!A2:Z",
+        });
+    }
+
+    //Escribir los datos en el rango deseado
+    for (let i = 0; i < panelHojas.length; i++) {
+        await googleSheets.spreadsheets.values.append({
+            auth,
+            spreadsheetId: SPREADSHEET_FEED,
+            range: panelHojas[i].toString() + "!A2:Z",
+            valueInputOption: "RAW", // O "USER_ENTERED"
+            resource: {
+                // values: automaticCatalog,
+                values: automaticCatalog[i],
+            },
+        });
+    }
+
+    // res.json([panelRowsUrls, panelHojas, panelRowsUrls.length, panelHojas.length]);
+
+    res.json(automaticCatalog);
+});
+
+app.get("/spreadsheets/get-urls2", async(req, res) => {
+    const auth = new google.auth.GoogleAuth({
+        keyFile: "vueling-data-aaeef24ee6b4.json",
+        scopes: "https://www.googleapis.com/auth/spreadsheets",
+    });
+
+    const SPREADSHEET_PANEL = "1wTbxtEu_dbYu-ldVZ2x3wKfhN90WuVsbZ6ES4wZ33sY";
+    const SPREADSHEET_FEED = "1awO0-8M54S5d9soruRBeJWBMa1eeUKB8v29cwDmeOY4";
+
+    // Crear la instancia del cliente para la autorización:
+    const client = await auth.getClient();
+
+    // Instancia de Google Sheets API:
+    const googleSheets = google.sheets({
+        version: "v4",
+        auth: client,
+    });
+
+    // Coger la metadata del spreadsheet:
+    const metaData = await googleSheets.spreadsheets.get({
+        auth,
+        // Sheet a la que vamos a apuntar para obtener la información:
+        spreadsheetId: SPREADSHEET_PANEL,
+    });
+
+    // Leer filas de la hoja del spreadsheet PANEL:
+    const getPanelRows = await googleSheets.spreadsheets.values.get({
+        auth,
+        // Sheet a la que vamos a apuntar para obtener la información:
+        spreadsheetId: SPREADSHEET_PANEL,
+        range: "listado_vuelos_desde!A2:A",
+    });
+
+    // Leer filas de la hoja del spreadsheet PANEL:
+    const getHoja = await googleSheets.spreadsheets.values.get({
+        auth,
+        // Sheet a la que vamos a apuntar para obtener la información:
+        spreadsheetId: SPREADSHEET_PANEL,
+        range: "listado_vuelos_desde!B2:B",
+    });
+
+    // Conseguir el array de URLs:
+    const panelRowsUrls = await getPanelRows.data.values.flat();
+
+    // Conseguir el array de Quincenas:
+    const panelHojas = await getHoja.data.values.flat();
+
+    // Usar el metodo createCatalog para objetos o createCatalogArray para un array sin el nombre de los campos.
+    const automaticCatalog = await createCatalogArrayCORS(panelRowsUrls, panelHojas);
 
     console.log("======== AUTOMATIC CATALOG VALUES: ======");
     console.log(automaticCatalog);
