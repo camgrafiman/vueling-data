@@ -13,7 +13,7 @@
   "author": "Manuel Alejandro Gallego - camgrafiman",
   "license": "ISC",
   "dependencies": {
-    "axios": "^0.21.1",
+    "axios": "^1.6.7",
     "basic-ftp": "^4.6.6",
     "body-parser": "^1.19.0",
     "cheerio": "^1.0.0-rc.9",
