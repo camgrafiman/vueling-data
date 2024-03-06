@@ -95,6 +95,10 @@ app.get("/create-xml", async(req, res) => {
     res.send(test);
 });
 
+app.get("/vueling/", async(req, res) => {
+    const html = getHTML(req.landing);
+});
+
 app.get("/spreadsheets/get-urls", async(req, res) => {
     const auth = new google.auth.GoogleAuth({
         keyFile: "vueling-data-aaeef24ee6b4.json",
@@ -288,27 +292,27 @@ Runs every day at 00:00:00 AM: '00 00 00 * * *'
 
 
 */
-app.get("/url/", async(req, res) => {
-    // console.log(req.params.landing);
-    console.log(req.query.landing);
-    console.log("ejecutado.");
+// app.get("/url/", async(req, res) => {
+//     // console.log(req.params.landing);
+//     console.log(req.query.landing);
+//     console.log("ejecutado.");
 
-    const landing = req.query.landing + "_fecha: " + new Date() + "\r\n";
-    fs.open("./public/logs/log.txt", "a+", (err, fd) => {
-        if (err) throw err;
-        fs.appendFile(fd, landing, "utf8", (err) => {
-            fs.close(fd, (err) => {
-                if (err) throw err;
-            });
-            if (err) throw err;
-        });
-    });
+//     const landing = req.query.landing + "_fecha: " + new Date() + "\r\n";
+//     fs.open("./public/logs/log.txt", "a+", (err, fd) => {
+//         if (err) throw err;
+//         fs.appendFile(fd, landing, "utf8", (err) => {
+//             fs.close(fd, (err) => {
+//                 if (err) throw err;
+//             });
+//             if (err) throw err;
+//         });
+//     });
 
-    res.json({
-        url: req.query.landing,
-        date: new Date(),
-    });
-});
+//     res.json({
+//         url: req.query.landing,
+//         date: new Date(),
+//     });
+// });
 
 app.get("/get-html", async(req, res) => {
     console.log(req.query.landing);
