@@ -4,7 +4,7 @@ const fs = require("fs");
 const { google } = require("googleapis");
 
 // Solo requerido en desarrollo:
-require("dotenv").config();
+// require("dotenv").config();
 
 const {
     getHTML,
